@@ -1,38 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>سجّل في رحلة العمرة</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>التسجيل في رحلة العمرة</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-box {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      margin-bottom: 60px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #FFD700;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #successMessage {
+      display: none;
+      margin-top: 15px;
+      color: lightgreen;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>خطوة لقلبك - سجّل الآن</h1>
+
+  <div class="form-box">
+    <h2>سجّل في قافلة العمرة</h2>
     <form id="umrahForm">
       <input type="text" name="name" placeholder="الاسم الكامل" required />
       <input type="tel" name="phone" placeholder="رقم الهاتف" required />
-      <button type="submit">سجّل</button>
+      <button type="submit">سجل الآن</button>
     </form>
-    <div id="successMessage" style="display:none;">✅ تم التسجيل! يتم تحويلك الآن...</div>
+    <p id="successMessage">✅ تم التسجيل! سيتم تحويلك لجروب واتساب...</p>
   </div>
+
+  <footer>
+    تطوير Yahya Reza © 2025 جميع الحقوق محفوظة
+  </footer>
 
   <script>
     document.getElementById("umrahForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      const data = new FormData(this);
-      fetch("https://script.google.com/macros/s/AKfycbw8ezmeNlmGRwQvPRYwLaXC7vB89C_RSnOu1wVIxrG3IqC7TrK8EpEaMGsTKXri4pQF1A/exec", {
-        method: "POST",
-        body: data
-      }).then(() => {
-        this.style.display = "none";
-        document.getElementById("successMessage").style.display = "block";
-        setTimeout(() => {
-          window.location.href = "https://chat.whatsapp.com/CXUuFy580oE6U11QIcTT8d";
-        }, 2000);
-      });
-    });
-  </script>
-</body>
-</html>
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbxLOHxORssIAwUmNgK50pDIssJcdOXOWLmgcL8C1O2G3ye2E2gzmLekoFPUVfj
