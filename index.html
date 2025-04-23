@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سجّل في رحلة العمرة</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>خطوة لقلبك - سجّل الآن</h1>
+    <form id="umrahForm">
+      <input type="text" name="name" placeholder="الاسم الكامل" required />
+      <input type="tel" name="phone" placeholder="رقم الهاتف" required />
+      <button type="submit">سجّل</button>
+    </form>
+    <div id="successMessage" style="display:none;">✅ تم التسجيل! يتم تحويلك الآن...</div>
+  </div>
+
+  <script>
+    document.getElementById("umrahForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      fetch("https://script.google.com/macros/s/AKfycbw8ezmeNlmGRwQvPRYwLaXC7vB89C_RSnOu1wVIxrG3IqC7TrK8EpEaMGsTKXri4pQF1A/exec", {
+        method: "POST",
+        body: data
+      }).then(() => {
+        this.style.display = "none";
+        document.getElementById("successMessage").style.display = "block";
+        setTimeout(() => {
+          window.location.href = "https://chat.whatsapp.com/CXUuFy580oE6U11QIcTT8d";
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
